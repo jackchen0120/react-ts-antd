@@ -1,0 +1,193 @@
+.login-container {
+    background-image: url('../assets/bg.png');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  
+    .pageHeader {
+      padding-top: 30px;
+      padding-left: 40px;
+  
+      img {
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 15px;
+      }
+  
+      span {
+        font-size: 18px;
+        display: inline-block;
+        vertical-align: -4px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  
+    .login-box {
+      position: absolute;
+      left: 64vw;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      box-sizing: border-box;
+      text-align: center;
+      box-shadow: 0 1px 11px rgba(0, 0, 0, 0.3);
+      border-radius: 2px;
+      /*margin: 100px auto 0;*/
+      width: 420px;
+      background: #fff;
+      padding: 45px 35px;
+      .option {
+        text-align: left;
+        margin-top: 18px;
+        .checked {
+          padding-left: 5px;
+        }
+        .forget-pwd, .goback {
+          float: right;
+          font-size: 14px;
+          font-weight: 400;
+          color: #4981f2;
+          line-height: 20px;
+          cursor: pointer;
+        }
+        .protocol {
+          color: #4981f2;
+          cursor: pointer;
+        }
+      }
+  
+      .login-text {
+        width: 100%;
+        text-align: center;
+        padding: 0 0 30px;
+        font-size: 24px;
+        letter-spacing: 1px;
+        span {
+          padding: 10px;
+          color: #969696;
+          cursor: pointer;
+          &.active {
+            font-weight: 600;
+            color: rgba(73, 129, 242, 1);
+            border-bottom: 2px solid rgba(73, 129, 242, 1);
+          }
+          &:hover {
+            border-bottom: 2px solid rgba(73, 129, 242, 1);
+          }
+        }
+        b {
+          padding: 10px;
+        }
+      }
+      .title {
+        font-weight: 600;
+        padding: 0 0 30px;
+        font-size: 24px;
+        letter-spacing: 1px;
+        color: rgba(73, 129, 242, 1);
+      }
+  
+      .input-box {
+        .input {
+        //   &:nth-child(1) {
+           
+        //   }
+          &:nth-child(2),
+          &:nth-child(3) {
+            margin-top: 20px;
+          }
+        }
+      }
+  
+      .loginBtn {
+        width: 100%;
+        height: 45px;
+        margin-top: 40px;
+        font-size: 15px;
+      }
+  
+      .input {
+        padding: 10px 0px;
+        font-size: 15px;
+        width: 350px;
+        color: #2c2e33;
+        outline: none; // 去除选中状态边框
+        border: 1px solid #fff;
+        border-bottom-color: #e7e7e7;
+        background-color: rgba(0, 0, 0, 0); // 透明背景
+      }
+  
+      input:focus {
+        border-bottom-color: #0f52e0;
+        outline: none;
+        box-shadow: none;
+      }
+      .button {
+        line-height: 45px;
+        cursor: pointer;
+        margin-top: 50px;
+        border: none;
+        outline: none;
+        height: 45px;
+        width: 350px;
+        background: rgba(216, 216, 216, 1);
+        border-radius: 2px;
+        color: white;
+        font-size: 15px;
+      }
+    }
+  
+    // 滚动条样式
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+  
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+      box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+  
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+      box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+    }
+  
+    ::-webkit-scrollbar-thumb:window-inactive {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  
+    //设置更改input 默认颜色
+    ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #bebebe;
+      font-size: 16px;
+    }
+  
+    ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #bebebe;
+      font-size: 16px;
+    }
+  
+    :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #bebebe;
+      font-size: 16px;
+    }
+  
+    input:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 1) inset;
+      -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 1) inset;
+      -webkit-text-fill-color: #2c2e33;
+    }
+  
+    .ivu-checkbox-wrapper {
+      margin-right: 0;
+    }
+  
+  }
