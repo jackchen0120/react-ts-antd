@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import store from '@/store';
 
 export class PermissionAuth extends React.Component {
     render () {
         const { location, config } = this.props;
         const { pathname } = location;
-        const isLogin = localStorage.getItem('token');
+        const isLogin = store.getState().user.data.token;
 
         // 如果该路由不用进行权限校验，登录状态下登陆页除外
         // 因为登陆后，无法跳转到登陆页

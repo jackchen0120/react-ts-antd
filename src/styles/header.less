@@ -1,0 +1,113 @@
+.header-container {
+    .header {
+      width: 100%;
+      background: #17174c;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 70px 20px 40px;
+      box-sizing: border-box;
+      .section {
+        display: flex;
+        ul {
+          display: flex;
+          align-items: center;
+          margin-left: 60px;
+          margin-bottom: 0;
+          li {
+            margin-right: 40px;
+            a {
+              color: #fff;
+              opacity: .5;
+              &:hover, &.active {
+                opacity: 1;
+              };
+            }
+          }
+        }
+      }
+      .dropdown-link {
+        color: #fff; 
+        .username {
+          padding-right: 10px;
+        }
+        .ivu-icon {
+          margin-left: 5px;
+        }
+      }
+      img {
+        outline: none;
+        height: 40px;
+        &.avatar {
+          border-radius: 50%;
+          width: 42px;
+          height: 42px;
+          margin-right: 5px;
+          vertical-align: middle;
+          background: #eee;
+        }
+      }
+  
+    }
+  
+    .github-corner {
+      svg {
+        fill: #42b983; 
+        color: #fff; 
+        position: absolute; 
+        top: 0; 
+        border: 0; 
+        right: 0;
+      }
+      .octo-arm {
+        transform-origin: 130px 106px;
+      }
+      &:hover {
+        .octo-arm {
+          -webkit-animation: octocat-wave .56s ease-in-out;
+          animation: octocat-wave .56s ease-in-out;
+        }
+      }
+  
+    }
+  
+    @-webkit-keyframes octocat-wave {
+      0%, 100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+      }
+      20%, 60% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+      }
+      40%, 80% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+      }
+    }
+    @keyframes octocat-wave {
+      0%, 100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+      }
+      20%, 60% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+      }
+      40%, 80% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+      }
+    }
+  
+  }	
+
+  .vertical-center-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .ivu-modal{
+        top: 0;
+    }
+  }

@@ -20,5 +20,5 @@ export const login = (username, password) => (dispatch) => {
 export const logout = () => (dispatch) => {
     console.log('logout')
     dispatch(clearUserInfo());
-    // location.href = '/login';
+    window.location.href = '/login';
 }

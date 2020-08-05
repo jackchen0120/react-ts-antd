@@ -51,13 +51,13 @@ export function formatTime(value) {
     return '';
   }
   let d = new Date(value);
-  let year = d.getFullYear();
+  // let year = d.getFullYear();
   let month = d.getMonth() + 1;
   let day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
   let hour = d.getHours() < 10 ? '0' + d.getHours() : '' + d.getHours();
-  let minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : '' + d.getMinutes();
-  let seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : '' + d.getSeconds();
-  return  month + '月' + day + '日' + ' ' + hour + '时';
+  // let minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : '' + d.getMinutes();
+  // let seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : '' + d.getSeconds();
+  return  `${month}月${day}日 ${hour}时`;
 }
 
 export function formatHour(value) {
@@ -65,9 +65,9 @@ export function formatHour(value) {
     return '';
   }
   let d = new Date(value);
-  let year = d.getFullYear();
-  let month = d.getMonth() + 1;
-  let day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
+  // let year = d.getFullYear();
+  // let month = d.getMonth() + 1;
+  // let day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
   let hour = d.getHours();
   return  hour;
 }
@@ -77,18 +77,16 @@ export function timeFromNow(value) {
   let timestamp = currentDate - value;
   switch (true) {
     case timestamp > 86400000:
-      return `${Math.floor(timestamp / 86400000)}天前`
-      break;
+      return `${Math.floor(timestamp / 86400000)}天前`;
     case timestamp > 3600000:
-      return `${Math.floor(timestamp / 3600000)}小时前`
-      break;
+      return `${Math.floor(timestamp / 3600000)}小时前`;
     case timestamp > 60000:
-      return `${Math.floor(timestamp / 60000)}分钟前`
-      break;
+      return `${Math.floor(timestamp / 60000)}分钟前`;
     case timestamp > 1000:
-      return `${Math.floor(timestamp / 1000)}秒钟前`
-      break;
-    }
+      return `${Math.floor(timestamp / 1000)}秒钟前`;
+    default:
+      // do nothing
+  }
 }
 
 

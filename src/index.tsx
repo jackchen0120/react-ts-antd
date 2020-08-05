@@ -1,4 +1,9 @@
-import React from 'react';
+ /* 描述: 主文件入口
+ *  作者: Jack Chen
+ *  日期: 2020-08-01
+ */
+
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.less';
 import '@/styles/base.less';

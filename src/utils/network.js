@@ -1,7 +1,9 @@
 // import * as React from 'react';
 import { message } from 'antd';
 import axios from 'axios';
+import store from '@/store';
 import { apiUrl } from './url';
+import { logout } from '@/store/actions';
 
 axios.defaults.headers['Content-Type'] = 'application/json';
 
@@ -14,8 +16,9 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
     config => {
-        if (localStorage.getItem('token')) {
-            config.headers['Authorization'] = localStorage.getItem('token');
+        console.log('store.getState()===',store.getState().user)
+        if (store.getState().user.data.token) {
+            config.headers['Authorization'] = store.getState().user.data.token;
         }
         return config;
     }, 
@@ -30,7 +33,8 @@ service.interceptors.response.use(
         console.log(response.data);
         // 抛出401错误，因为token失效，重新刷新页面，清空缓存，跳转到登录界面
         if (response.data.code === 401) {
-            console.log('退出登录')
+            console.log('退出登录');
+            store.dispatch(logout());
         }
 
         return response.data;
