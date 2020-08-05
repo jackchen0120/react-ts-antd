@@ -9,7 +9,7 @@ import * as React from 'react';
 import { Input, Button, Checkbox, message } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { login } from '@/store/actions';
+import { login, register } from '@/store/actions';
 import logo from "@/assets/logo_2.png";
 import '@/styles/login.less';
 import { validUserName, validPass } from '@/utils/valid';
@@ -17,6 +17,7 @@ import DocumentTitle from 'react-document-title';
 
 interface IProps {
     login: any,
+    register: any,
     history: any
 }
 
@@ -108,7 +109,6 @@ class Login extends React.Component<IProps, IState> {
     handleLogin = () => {
         const { login, history } = this.props; 
         const { formLogin, checked } = this.state;
-        // history.push('/404');
 
         if (!validUserName(formLogin.userName)) {
             message.error('请输入正确的邮箱/手机号');
@@ -119,9 +119,6 @@ class Login extends React.Component<IProps, IState> {
             message.error('密码应为8到20位字母或数字！');
             return false;
         }
-
-        console.log('formLogin===',formLogin)
-        console.log('checked===',checked)
         
         // 判断复选框是否被勾选，勾选则调用配置cookie方法
         if (checked) {
@@ -151,12 +148,43 @@ class Login extends React.Component<IProps, IState> {
 
     // 立即注册
     handleRegister = () => {
-        console.log('注册')
+        console.log(this.props)
+        const { register, history } = this.props; 
+        const { formRegister } = this.state;
+
+        if (!validUserName(formRegister.userName)) {
+            message.error("请输入正确的邮箱/手机号");
+            return false;
+        } else if (!validPass(formRegister.userPwd)) {
+            message.error("密码应为8到20位字母或数字！");
+            return false;
+        } else if (!validPass(formRegister.userPwd2)){
+            message.error("确认密码有误");
+            return false;
+        } else if (formRegister.userPwd2 !== formRegister.userPwd){
+            message.error("两次密码不一致");
+            return false;
+        }
+
+        register(
+            formRegister.userName,
+            formRegister.userPwd2
+        )
+        .then((res: any) => {
+            if (res.code === 0) {
+                this.clearInput();
+                message.success('注册成功');
+                history.push('/');
+            }
+        })
+        .catch((error: any) => {
+            message.error(error);
+        })
     }
 
     // 登录/注册tab切换
     handleTab = (type: number) => {
-        console.log('type===',type);
+        // console.log('type===',type);
         this.setState({
             typeView: type
         })
@@ -215,14 +243,24 @@ class Login extends React.Component<IProps, IState> {
     }
 
     // 判断点击的键盘keyCode是否为13，是就调用登录函数
-    handleEnterKey = (e: any) => {
-        const { formLogin } = this.state;
-        if (!formLogin.userName || !formLogin.userPwd) {
-            return;
-        } else {
-            if(e.nativeEvent.keyCode === 13){ //e.nativeEvent获取原生的事件对像
-                this.handleLogin();
+    handleEnterKey = (e: any, type: number) => {
+        const { formLogin, formRegister } = this.state;
+        if (type === 1) {
+            if (!formLogin.userName || !formLogin.userPwd) {
+                return;
+            } else {
+                if(e.nativeEvent.keyCode === 13){ //e.nativeEvent获取原生的事件对像
+                    this.handleLogin();
+                }
             }
+        } else {
+            if (!formRegister.userName || !formRegister.userPwd || !formRegister.userPwd2) {
+                return;
+            } else {
+                if(e.nativeEvent.keyCode === 13){ //e.nativeEvent获取原生的事件对像
+                    this.handleRegister();
+                }
+            } 
         }
     }
 
@@ -258,7 +296,7 @@ class Login extends React.Component<IProps, IState> {
                                 maxLength={ 20 }
                                 value={ formLogin.userPwd }
                                 onChange={ (e) => this.handleChangeInput(e, 2) }
-                                onPressEnter={ this.handleEnterKey }
+                                onPressEnter={ (e) => this.handleEnterKey(e, 1) }
                                 placeholder="请输入登录密码"
                             />
                         </div>
@@ -294,9 +332,10 @@ class Login extends React.Component<IProps, IState> {
                                 maxLength={ 20 }
                                 value={ formRegister.userPwd2 }
                                 onChange={ (e) => this.handleChangeRegister(e, 3) }
+                                onPressEnter={ (e) => this.handleEnterKey(e, 2) }
                                 placeholder="请再次确认密码"
                             />
-    `                   </div>
+                        </div>
                         <Button className="loginBtn" type="primary" onClick={ this.handleRegister } disabled={ !formRegister.userName || !formRegister.userPwd || !formRegister.userPwd2 }>立即注册</Button>
                     </div>
                 }
@@ -310,4 +349,4 @@ class Login extends React.Component<IProps, IState> {
 }
 
 
-export default withRouter(connect((state: any) => state.user, { login })(Login))
+export default withRouter(connect((state: any) => state.user, { login, register })(Login))

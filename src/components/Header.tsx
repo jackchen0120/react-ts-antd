@@ -52,7 +52,7 @@ export default class Header extends React.Component<IProps, IState> {
     render () {
         const { visible, loading } = this.state;
         const onClick = (e: any) => {
-            console.log(e.key)
+            // console.log(e.key)
             if (e.key === '1') {
                 this.showModal();
             } else {
