@@ -5,16 +5,18 @@
 
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Modal, Button } from 'antd';
+import { Menu, Dropdown, Modal, Button, Form, Input } from 'antd';
+import { FormInstance } from 'antd/lib/form';
 import store from '@/store';
 import { logout } from '@/store/actions';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '@/assets/logo_2.png';
 import avatar from '@/assets/avatar.jpg';
 import '@/styles/header.less';
+import ModifyPwdForm from './modifyPwdForm';
 
 interface IProps {
-
+    // form: any
 }
 
 interface IState {
@@ -23,7 +25,8 @@ interface IState {
 }
 
 export default class Header extends React.Component<IProps, IState> {
-    constructor(props: Object) {
+    formRef = React.createRef<FormInstance>();
+    constructor(props: any) {
         super(props);
 
         this.state = {
@@ -38,7 +41,7 @@ export default class Header extends React.Component<IProps, IState> {
         });
     }
     
-    handleOk = () => {
+    handleModifyPwdOk = () => {
         this.setState({ loading: true });
         setTimeout(() => {
           this.setState({ loading: false, visible: false });
@@ -50,7 +53,10 @@ export default class Header extends React.Component<IProps, IState> {
     }
 
     render () {
+        // const { form } = this.props;
+        // const { getFieldDecorator } = this.props.form;
         const { visible, loading } = this.state;
+        console.log('form==')
         const onClick = (e: any) => {
             // console.log(e.key)
             if (e.key === '1') {
@@ -66,6 +72,15 @@ export default class Header extends React.Component<IProps, IState> {
                 <Menu.Item key="2">退出</Menu.Item>
             </Menu>
         );
+
+        const formItemLayout = {
+            labelCol: {
+              sm: { span: 4 },
+            },
+            wrapperCol: {
+              sm: { span: 16 },
+            },
+        }
         
         return (
             <div className="header-container">
@@ -105,20 +120,45 @@ export default class Header extends React.Component<IProps, IState> {
                     </svg>
                 </a>
 
-                <Modal
+                <ModifyPwdForm 
+                    // wrappedComponentRef={formRef => this.addUserFormRef = formRef}
+                    // visible={this.state.ModifyPwdModalVisible}
+                    // confirmLoading={this.state.ModifyPwdModalLoading}
+                    onCancel={ this.handleCancel }
+                    onOk={ this.handleModifyPwdOk }
+                />
+                {/* <Modal
                     visible={ visible }
                     title="修改密码"
-                    onOk={ this.handleOk }
+                    onOk={ this.handleModifyPwdOk }
                     onCancel={ this.handleCancel }
                     footer={[
-                        <Button key="back" onClick={ this.handleCancel }>Return</Button>,
-                        <Button key="submit" type="primary" loading={loading} onClick={ this.handleOk }>Submit</Button>,
+                        <Button key="back" onClick={ this.handleCancel }>取消</Button>,
+                        <Button key="submit" type="primary" loading={ loading } onClick={ this.handleOk }>确定</Button>,
                     ]}
-                    >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                </Modal>
+                >
+                    <Form { ...formItemLayout } ref={this.formRef}>
+                        <Form.Item
+                            label="旧密码"
+                            name="旧密码"
+                            rules={[{ required: true, message: '请输入旧密码' }]}
+                        >
+                            <Input placeholder="请输入旧密码" />
+                        </Form.Item>
+                        <Form.Item 
+                            label="新密码"
+                            rules={[{ required: true, message: '请输入新密码' }]}
+                        >
+                            <Input placeholder="请输入新密码" />
+                        </Form.Item>
+                        <Form.Item 
+                            label="确认新密码"
+                            rules={[{ required: true, message: '请再次确认新密码' }]}
+                        >
+                            <Input placeholder="请再次确认新密码" />
+                        </Form.Item>
+                    </Form>
+                </Modal> */}
             </div>
         )
     }
