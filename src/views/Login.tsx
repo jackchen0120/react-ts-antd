@@ -287,7 +287,7 @@ class Login extends React.Component<IProps, IState> {
                                 type="text"
                                 className="input"
                                 value={ formLogin.userName }
-                                onChange={ (e) => this.handleChangeInput(e, 1) }
+                                onChange={ (e: any) => this.handleChangeInput(e, 1) }
                                 placeholder="请输入登录邮箱/手机号"
                             />
                             <Input
@@ -295,8 +295,8 @@ class Login extends React.Component<IProps, IState> {
                                 className="input"
                                 maxLength={ 20 }
                                 value={ formLogin.userPwd }
-                                onChange={ (e) => this.handleChangeInput(e, 2) }
-                                onPressEnter={ (e) => this.handleEnterKey(e, 1) }
+                                onChange={ (e: any) => this.handleChangeInput(e, 2) }
+                                onPressEnter={ (e: any) => this.handleEnterKey(e, 1) }
                                 placeholder="请输入登录密码"
                             />
                         </div>
@@ -315,7 +315,7 @@ class Login extends React.Component<IProps, IState> {
                                 type="text"
                                 className="input"
                                 value={ formRegister.userName }
-                                onChange={ (e) => this.handleChangeRegister(e, 1) }
+                                onChange={ (e: any) => this.handleChangeRegister(e, 1) }
                                 placeholder="请输入注册邮箱/手机号"
                             />
                             <Input
@@ -323,7 +323,7 @@ class Login extends React.Component<IProps, IState> {
                                 className="input"
                                 maxLength={ 20 }
                                 value={ formRegister.userPwd }
-                                onChange={ (e) => this.handleChangeRegister(e, 2) }
+                                onChange={ (e: any) => this.handleChangeRegister(e, 2) }
                                 placeholder="请输入密码"
                             />
                             <Input
@@ -331,8 +331,8 @@ class Login extends React.Component<IProps, IState> {
                                 className="input"
                                 maxLength={ 20 }
                                 value={ formRegister.userPwd2 }
-                                onChange={ (e) => this.handleChangeRegister(e, 3) }
-                                onPressEnter={ (e) => this.handleEnterKey(e, 2) }
+                                onChange={ (e: any) => this.handleChangeRegister(e, 3) }
+                                onPressEnter={ (e: any) => this.handleEnterKey(e, 2) }
                                 placeholder="请再次确认密码"
                             />
                         </div>
