@@ -1,10 +1,10 @@
  /* 描述: 头部header模板
  *  作者: Jack Chen
- *  日期: 2020-08-02
+ *  日期: 2020-08-03
  */
 
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd';
 import store from '@/store';
 import { logout } from '@/store/actions';
@@ -49,7 +49,6 @@ const ModifyUserForm: React.FC<IProps> = ({
         form.validateFields()
         .then((values: any) => {
             onOk(values);
-            // form.resetFields();
         })
         .catch(info => {
             console.log('Validate Failed:', info);
@@ -107,9 +106,11 @@ const ModifyUserForm: React.FC<IProps> = ({
 }
 
 
-const Header = () => {
+const Header = (props: any) => {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
+    const { curActive } = props;
+    console.log('props===', props)
 
     const onOk = (values: Values) => {
         console.log('Received values of form: ', values);
@@ -181,7 +182,7 @@ const Header = () => {
                     <img src={ logo } alt="logo" />
                     <ul>
                         <li>
-                            <NavLink to='/home' className="active">首页</NavLink>
+                            <a href="/" rel="noopener noreferrer" className={ curActive }>首页</a>
                         </li>
                         <li>
                             <a href="https://jackchen0120.github.io/vueDataV/" target="_blank" rel="noopener noreferrer">大数据可视化平台</a>
