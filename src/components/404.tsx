@@ -9,14 +9,30 @@ import { Button } from 'antd';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+const styles: any = { 
+    width: '100%', 
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between' 
+}
+
+const mainStyle: any = {
+    width: '100%',
+    height: 'calc(100% - 194px)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+
 export default class NotFound extends React.Component {
     render () {
         return (
             <DocumentTitle title={'404页面'}>
-                <div className="notFound">
+                <div className="notFound" style={ styles }>
                     <Header curActive={''} />
 
-                    <div className="main" style={{ marginTop: '30px' }}>
+                    <div className="main" style={ mainStyle }>
                         <div className="ant-result">
                             <div className="ant-result-icon ant-result-image">
                                 <svg width="252" height="294">
