@@ -3,6 +3,8 @@ NodeJS全栈开发之前端基于 React全家桶+TypeScript+Antd 构建用户界
 
 [在线DEMO演示](http://106.55.168.13:9000/)
 
+[手摸手教你大厂都在用 React+TS+Antd 快速入门到NodeJS全栈项目实战](https://juejin.cn/post/6859354172127936526)
+
 
 # 部分截图
 
