@@ -126,4 +126,4 @@ yarn build
 
 欢迎关注作者公众号：**懒人码农**
 
-<img src="https://user-gold-cdn.xitu.io/2020/7/5/1731eb762d539047?w=750&h=520&f=gif&s=81787" width="750" alt="公众号二维码" />
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC81LzEzLzE3MjBlM2U0ZmQ5NDZiZDQ?x-oss-process=image/format,png" width="750" alt="公众号二维码" />
