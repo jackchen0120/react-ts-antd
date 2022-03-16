@@ -22,7 +22,7 @@ NodeJS全栈开发之前端基于 React全家桶+TypeScript+Antd 构建用户界
 
 ## 修改密码
 
-<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8fdc9c6390874c5985ab9d7c9de3bd1f~tplv-k3u1fbpfcp-zoom-1.image" width="900" alt="修改密码" />
+<img src="https://raw.githubusercontent.com/jackchen0120/todo-vue-admin/master/public/frontend_4.png" width="900" alt="修改密码" />
 
 ## 错误页面
 
